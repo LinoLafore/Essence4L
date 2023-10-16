@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="test.css">
+  <title>Calculateur d'essence</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+
+
+</head>
+<body class="container">  
+  <h1>Calculateur d'essence</h1>
+  <label for="kmPlein">Kilomètres lors du plein :</label>
+  <input type="number" id="kmPlein"><br>
+  <label for="kmActuel">Kilomètres actuels :</label>
+  <input type="number" id="kmActuel"><br>
+  <button onclick="calculerPourcentage()">Calculer</button>
+  <p id="resultat"></p>
+</body>
+</html>
+<script>
+function calculerPourcentage() {
+    const kmPlein = parseInt(document.getElementById("kmPlein").value);
+    const kmActuel = parseInt(document.getElementById("kmActuel").value);
+
+    if (!isNaN(kmPlein) && !isNaN(kmActuel)) {
+        const litresParcourus = (kmActuel - kmPlein) * (7.5 / 100);
+        const pourcentage = (litresParcourus / 34) * 100; // 34 litres dans un plein
+        document.getElementById("resultat").innerHTML = "Vous avez consommé " + pourcentage.toFixed(2) + "% d'essence."; // Ajout de cette ligne
+    } else {
+        document.getElementById("pourcentageResultat").textContent = "Veuillez entrer des valeurs numériques valides.";
+    }
+}
+</script>
